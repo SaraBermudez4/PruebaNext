@@ -1,0 +1,238 @@
+@import "node_modules/tailwindcss/base.css";
+@import "node_modules/tailwindcss/components.css";
+@import "node_modules/tailwindcss/utilities.css";
+
+/* ******************** */
+/* #. Colors */
+/* ******************** */
+
+$primary: #103642;
+$secondary: #EA685C;
+$higthlightPrimary: #375c66;
+$higthlightSecondary: #FCEADD;
+$white: #fff;
+$higthlightGray: #D0D0D0;
+$black: #000;
+
+/* ******************** */
+/* #. Header */
+/* ******************** */
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  .separator {
+    background-color: $white;
+    height: 45px;
+    width: 1px;
+  }
+
+  .header {
+    background-color: $secondary;
+
+    &.active {
+      background-color: $white;
+
+      img {
+        &:first-child {
+          display: none;
+        }
+
+        &:last-child {
+          display: flex;
+        }
+      }
+    }
+
+    img {
+      &:first-child {
+        display: flex;
+      }
+
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+
+  .nav {
+    background-color: $white;
+
+    &.active {
+      background-color: $secondary;
+
+      button {
+        border: 1px solid $white;
+        color: $white;
+      }
+    }
+
+    .menu {
+      li {
+        position: relative;
+        transition: all 300ms ease-in-out;
+
+        &:hover {
+          .sub-menu {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        .sub-menu {
+          background-color: $white;
+          border-radius: 15px;
+          color: $primary;
+          opacity: 0;
+          position: absolute;
+          transition: all 300ms ease-in-out;
+          visibility: hidden;
+          top: 55px;
+          width: max-content;
+
+          &::before {
+            content: "";
+            border-color: transparent transparent $white transparent;
+            border-width: 0 25px 25px 25px;
+            left: 5%;
+            position: absolute;
+            top: -10px;
+          }
+
+          li {
+            border-bottom: 1px solid $higthlightGray;
+            cursor: pointer;
+            padding: 7px 15px;
+            transition: all 300ms ease-in-out;
+
+            &:hover {
+              background-color: $secondary;
+              color: $white;
+            }
+
+            &:first-child {
+              border-top-left-radius: 15px;
+              border-top-right-radius: 15px;
+            }
+
+            &:last-child {
+              border: 0;
+              border-bottom-left-radius: 15px;
+              border-bottom-right-radius: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .menu-mobile {
+    .menu {
+      li {
+        transition: all 300ms ease-in-out;
+
+        &:hover {
+          .sub-menu {
+            opacity: 1;
+            visibility: visible;
+            max-height: 100%;
+          }
+        }
+
+        .sub-menu {
+          opacity: 0;
+          transition: all 300ms ease-in-out;
+          visibility: hidden;
+          max-height: 0;
+
+          li {
+            &:last-child {
+              border: 0;
+              font-weight: normal;
+              text-transform: initial;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  .contact-popup {
+    background-color: $white;
+    border-bottom-right-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, .7);
+    opacity: 0;
+    position: absolute;
+    transform: scale(0);
+    transition: all 200ms ease-in-out;
+
+    &.active {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .menu-mobile {
+    background: $white;
+    height: 100vh;
+    margin-top: -1px;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    transform: scale(0);
+    transition: all 200ms ease-in-out;
+    width: 100%;
+
+    li {
+      transition: all 200ms ease-in-out;
+      opacity: 0;
+    }
+
+    &.active {
+      transform: scale(1);
+      opacity: 1;
+
+      li {
+        border-bottom: 1px solid $higthlightGray;
+        color: $primary;
+        font-size: 18px;
+        font-weight: 400;
+        opacity: 1;
+        padding: 5px 0;
+
+        &:last-child {
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+/* ******************** */
+/* #. Footer */
+/* ******************** */
+
+footer {
+    .footer-nav-link {
+      a {
+        padding-left: 15px;
+        position: relative;
+  
+        &::before {
+          content: '/';
+          color: $secondary;
+          bottom: 0;
+          left: 0;
+          line-height: normal;
+          position: absolute;
+          top: 0;
+        }
+      }
+    }
+  }
